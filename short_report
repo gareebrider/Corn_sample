@@ -1,1 +1,53 @@
+1. Preprocessing Steps and Rationale  
 
+Data Cleaning  
+- Loaded the dataset from `data/TASK-ML-INTERN.csv`.  
+- Checked for missing values and handled them using `fillna(df.mean())`.  
+- Selected only numeric columns to ensure compatibility with machine learning models.  
+
+Feature Scaling & Normalization  
+- Standardized the features using `StandardScaler()` to ensure all spectral data are on the same scale.  
+- Standardized the target variable (`DON Concentration`) for training deep learning models.  
+
+Dimensionality Reduction  
+- PCA (Principal Component Analysis): Reduced feature dimensions to 15 while maintaining maximum variance.  
+- t-SNE (t-distributed Stochastic Neighbor Embedding): Used for visualizing high-dimensional data in 2D space.  
+
+2. Insights from Dimensionality Reduction  
+
+- PCA Analysis: Retained 95 percent of variance using 15 components, reducing computational complexity.  
+- t-SNE Visualization: Provided insights into how data clusters, helping in model interpretability.  
+
+3. Model Selection, Training & Evaluation  
+
+Model Choices  
+1. XGBoost: Chosen for its high efficiency in structured data tasks.  
+2. Random Forest: Used as a baseline for performance comparison.  
+3. LSTM (Long Short-Term Memory): Implemented with CNN layers to leverage sequential patterns in spectral data.  
+
+Training Process  
+- XGBoost: Trained with 300 estimators, `max_depth=7`, `learning_rate=0.03`.  
+- Random Forest: Trained with 300 estimators.  
+- LSTM:  
+  - Input: PCA-transformed spectral data.  
+  - Architecture: CNN layer + Bidirectional LSTM layers with dropout.  
+  - Optimizer: Adam with `learning_rate=0.0001`.  
+  - Early stopping applied to prevent overfitting.  
+
+Evaluation Metrics  
+
+| Model       | MAE  | RMSE  | R² Score |  
+|------------|------|-------|---------|  
+| XGBoost    | 0.1294 | 0.2411 | 0.9644 |  
+| RandomForest | 0.1937 | 0.4972 | 0.8486 |  
+| LSTM       | 2261.54 | 3988.32 | 0.9431 |  
+
+- XGBoost outperformed other models, making it the best choice for prediction.  
+- LSTM performed well but requires further fine-tuning to reduce MAE and RMSE.  
+
+4. Key Findings & Suggestions for Improvement  
+
+Findings  
+- PCA significantly reduced the number of features while maintaining high variance.  
+- XGBoost performed best among models, followed by Random Forest.  
+- LSTM struggled with high MAE and RMSE, indicating potential issues with hyperparameter tuning.  
