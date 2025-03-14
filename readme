@@ -1,1 +1,40 @@
+## Project Overview  
+This repository contains code for predicting DON concentration in corn samples using hyperspectral imaging data. The models used include XGBoost, Random Forest, and LSTM with CNN layers.  
 
+## GitHub Repository  
+[Click here to access the repository](https://github.com/gareebrider/Corn_sample/tree/main)  
+
+## Installation & Setup  
+
+1. Clone the Repository:  
+```bash
+git clone https://github.com/gareebrider/Corn_sample.git
+cd Corn_sample
+```  
+
+2. Install Dependencies:  
+```bash
+pip install -r requirements.txt
+```  
+
+3. Run the Code:  
+- Training & Evaluation:  
+```bash
+python main.py
+```  
+- Streamlit App:  
+```bash
+streamlit run app.py
+```  
+
+## Repository Structure  
+```
+Corn_sample/  
+│── README.md                Project documentation  
+│── main.py                  Main script for training & evaluation  
+│── app.py                   Streamlit app for predictions  
+│── requirements.txt         Dependencies list  
+│── models/                  Saved models  
+│── data/                    Dataset files (TASK-ML-INTERN.csv)  
+│── notebooks/               Jupyter notebooks for EDA & experimentation  
+``` 
